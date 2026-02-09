@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Love Story</title>
+    <title>Our Valentine</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -87,7 +87,7 @@
             }
         }
 
-        /* Header Section */
+        /* Hero Section */
         .hero-section {
             min-height: 100vh;
             display: flex;
@@ -321,285 +321,849 @@
             animation: silkShine 3s infinite;
             pointer-events: none;
         }
+
+        /* Photobooth Section */
+        .photobooth-section {
+            background: linear-gradient(135deg, rgba(255, 245, 247, 0.6) 0%, rgba(255, 209, 220, 0.3) 100%);
+        }
+
+        .photobooth-strip {
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 15px 50px rgba(139, 69, 89, 0.15);
+            padding: 1.5rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            max-width: 450px;
+            margin: 0 auto;
+            border: 2px solid rgba(255, 209, 220, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .photobooth-strip::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, transparent 0%, rgba(255, 182, 193, 0.1) 50%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+        }
+
+        .photobooth-strip:hover::before {
+            opacity: 1;
+        }
+
+        .photobooth-strip:hover {
+            transform: translateY(-10px) rotate(1deg);
+            box-shadow: 0 25px 70px rgba(139, 69, 89, 0.25);
+            border-color: var(--blush-rose);
+        }
+
+        .strip-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0 1rem;
+            border-bottom: 2px dashed rgba(255, 182, 193, 0.3);
+            margin-bottom: 1.5rem;
+        }
+
+        .strip-holes {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .hole {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #f0f0f0 0%, #d0d0d0 100%);
+            border: 2px solid rgba(139, 69, 89, 0.2);
+            display: inline-block;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .strip-date {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            font-style: italic;
+            color: var(--rose-gold);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .photobooth-frame {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #f5f5f5;
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .photobooth-frame img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 4px;
+            transition: transform 0.4s ease;
+        }
+
+        .photobooth-strip:hover .photobooth-frame img {
+            transform: scale(1.03);
+        }
+
+        .strip-footer {
+            padding: 1rem 0 0.5rem;
+            border-top: 2px dashed rgba(255, 182, 193, 0.3);
+            margin-top: 1.5rem;
+            text-align: center;
+        }
+
+        .strip-brand {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            color: var(--deep-rose);
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        /* DATE INFORMATION PAGE STYLES */
+        .date-info-page {
+            min-height: 100vh;
+            display: none;
+            padding: 4rem 2rem;
+            position: relative;
+        }
+
+        .date-info-page.active {
+            display: block;
+        }
+
+        .date-card {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 3rem;
+            box-shadow: 0 20px 80px rgba(255, 182, 193, 0.4);
+            border: 2px solid rgba(255, 209, 220, 0.5);
+            animation: slideUp 0.8s ease-out;
+        }
+
+        .date-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .date-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-style: italic;
+            color: var(--deep-rose);
+            margin-bottom: 1rem;
+        }
+
+        .date-header .heart-divider {
+            font-size: 2rem;
+            color: var(--blush-rose);
+            margin: 1rem 0;
+        }
+
+        .date-header p {
+            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+            color: var(--rose-gold);
+            font-style: italic;
+        }
+
+        .date-details {
+            margin-top: 3rem;
+        }
+
+        .date-item {
+            background: linear-gradient(135deg, rgba(255, 245, 247, 0.6) 0%, rgba(255, 209, 220, 0.3) 100%);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(255, 182, 193, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .date-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 30px rgba(255, 182, 193, 0.3);
+        }
+
+        .date-item-label {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: var(--deep-rose);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .date-item-label::before {
+            content: '♥';
+            color: var(--blush-rose);
+            font-size: 1.5rem;
+        }
+
+        .date-item-content {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            color: var(--rose-gold);
+            line-height: 1.6;
+            margin-left: 2rem;
+        }
+
+        /* Camera Icon Button */
+        .camera-icon {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #ff85a6 0%, #ffb3c1 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(255, 133, 166, 0.5);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            animation: pulse 2s infinite;
+        }
+
+        .camera-icon:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 12px 35px rgba(255, 133, 166, 0.7);
+        }
+
+        .camera-icon svg {
+            width: 30px;
+            height: 30px;
+            fill: white;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 8px 25px rgba(255, 133, 166, 0.5);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 12px 35px rgba(255, 133, 166, 0.7);
+            }
+        }
+
+        /* Valentine Modal Overlay */
+        #valentine-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #fff5f7 0%, #ffd1dc 100%);
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .valentine-modal {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 3rem 2rem;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 20px 80px rgba(255, 182, 193, 0.4);
+            border: 2px solid rgba(255, 209, 220, 0.5);
+            animation: slideUp 0.6s ease-out;
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .beating-heart {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 2rem;
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+        
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            10%, 30% { transform: scale(1.1); }
+            20%, 40% { transform: scale(1); }
+        }
+        
+        .heart-path {
+            filter: drop-shadow(0 4px 12px rgba(255, 133, 166, 0.4));
+        }
+        
+        .valentine-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-style: italic;
+            color: #8b4559;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+        
+        .valentine-question {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.3rem, 3vw, 1.8rem);
+            color: #b76e79;
+            margin-bottom: 2.5rem;
+            font-style: italic;
+        }
+        
+        .valentine-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+        
+        .btn-yes, .btn-no {
+            font-family: 'Cormorant Garamond', serif;
+            padding: 1rem 3rem;
+            font-size: 1.3rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-yes {
+            background: linear-gradient(135deg, #ff85a6 0%, #ffb3c1 100%);
+            color: white;
+            min-width: 150px;
+        }
+        
+        .btn-yes:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 133, 166, 0.4);
+        }
+        
+        .btn-no {
+            background: #f0f0f0;
+            color: #999;
+            min-width: 100px;
+            position: relative;
+        }
+        
+        .btn-no:hover {
+            background: #e0e0e0;
+        }
+        
+        #password-section {
+            margin-top: 2rem;
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        .password-reveal {
+            padding: 1.5rem;
+            background: rgba(255, 245, 247, 0.6);
+            border-radius: 20px;
+            border: 2px dashed rgba(255, 182, 193, 0.4);
+        }
+        
+        .password-message {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: #8b4559;
+            margin-bottom: 0.5rem;
+            font-style: italic;
+        }
+        
+        .password-hint {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            color: #b76e79;
+            margin-bottom: 0.5rem;
+        }
+        
+        .password-clue {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+            color: #d4a5b0;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+        
+        .password-input-wrapper {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        #password-input {
+            flex: 1;
+            padding: 0.8rem 1.2rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            border: 2px solid rgba(255, 182, 193, 0.5);
+            border-radius: 50px;
+            outline: none;
+            transition: all 0.3s ease;
+            background: white;
+            color: #8b4559;
+        }
+        
+        #password-input:focus {
+            border-color: #ffb3c1;
+            box-shadow: 0 0 0 3px rgba(255, 179, 193, 0.2);
+        }
+        
+        .btn-submit {
+            padding: 0.8rem 2rem;
+            background: linear-gradient(135deg, #ff85a6 0%, #ffb3c1 100%);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 133, 166, 0.4);
+        }
+        
+        .password-error {
+            color: #ff6b96;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+            font-style: italic;
+            animation: shake 0.5s ease-in-out;
+        }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .photobooth-strip {
+                max-width: 100%;
+            }
+
+            .date-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .camera-icon {
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .camera-icon svg {
+                width: 25px;
+                height: 25px;
+            }
+
+            .valentine-modal {
+                padding: 2rem 1.5rem;
+            }
+            
+            .btn-yes, .btn-no {
+                padding: 0.8rem 2rem;
+                font-size: 1.1rem;
+            }
+            
+            .password-input-wrapper {
+                flex-direction: column;
+            }
+            
+            .btn-submit {
+                width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
-    <!-- Floating Tulip Petals -->
-    <div class="tulip-petal"></div>
-    <div class="tulip-petal"></div>
-    <div class="tulip-petal"></div>
-    <div class="tulip-petal"></div>
-    <div class="tulip-petal"></div>
-
-    <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="hero-content">
-            <h1>Our Love Story</h1>
-            <div class="decorative-line"></div>
-            <p>Every moment with you is a treasure worth keeping forever</p>
-        </div>
-    </section>
-
-    <!-- Bootstrap Photo Gallery Section -->
-    <section class="content-section">
-        <div class="container">
-            <h2 class="section-title">Cherished Moments</h2>
-            <p class="section-subtitle">Click on any photo to view in full size</p>
-            
-            <div class="row g-4">
-                <!-- Photo 1 -->
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="photo-card silk-overlay" data-bs-toggle="modal" data-bs-target="#photoModal1">
-                        <img src="img1.png" alt="Our Memory 1" loading="lazy">
-                    </div>
+    <!-- Valentine Question Overlay -->
+    <div id="valentine-overlay">
+        <div class="valentine-modal">
+            <div class="valentine-content">
+                <!-- Animated Heart -->
+                <div class="beating-heart">
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <path class="heart-path" d="M50,85 C50,85 15,60 15,40 C15,25 25,15 35,15 C42,15 47,20 50,25 C53,20 58,15 65,15 C75,15 85,25 85,40 C85,60 50,85 50,85 Z" fill="#ff85a6"/>
+                    </svg>
                 </div>
                 
-                <!-- Photo 2 -->
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="photo-card silk-overlay" data-bs-toggle="modal" data-bs-target="#photoModal2">
-                        <img src="img2.png" alt="Our Memory 2" loading="lazy">
-                    </div>
+                <h1 class="valentine-title">Question...</h1>
+                <p class="valentine-question">Our Valentine's Debut is Calling—Will you be my Date and Start our First Celebration Together? </p>
+                
+                <div class="valentine-buttons">
+                    <button class="btn-yes" onclick="handleYes()">Yes! 💕</button>
+                    <button class="btn-no" onclick="handleNo(this)">No</button>
                 </div>
                 
-                <!-- Photo 3 -->
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="photo-card silk-overlay" data-bs-toggle="modal" data-bs-target="#photoModal3">
-                        <img src="img3.png" alt="Our Memory 3" loading="lazy">
-                    </div>
-                </div>
-                
-                <!-- Photo 4 -->
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="photo-card silk-overlay" data-bs-toggle="modal" data-bs-target="#photoModal4">
-                        <img src="img4.png" alt="Our Memory 4" loading="lazy">
-                    </div>
-                </div>
-                
-                <!-- Photo 5 -->
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="photo-card silk-overlay" data-bs-toggle="modal" data-bs-target="#photoModal5">
-                        <img src="img5.png" alt="Our Memory 5" loading="lazy">
-                    </div>
-                </div>
-                
-                <!-- Photo 6 -->
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="photo-card silk-overlay" data-bs-toggle="modal" data-bs-target="#photoModal6">
-                        <img src="img6.png" alt="Our Memory 6" loading="lazy">
-                    </div>
-                </div>
-                
-                <!-- Photo 7 -->
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="photo-card silk-overlay" data-bs-toggle="modal" data-bs-target="#photoModal7">
-                        <img src="img7.png" alt="Our Memory 7" loading="lazy">
-                    </div>
-                </div>
-                
-                <!-- Photo 8 -->
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="photo-card silk-overlay" data-bs-toggle="modal" data-bs-target="#photoModal8">
-                        <img src="img8.png" alt="Our Memory 8" loading="lazy">
+                <!-- Password Form (initially hidden) -->
+                <div id="password-section" style="display: none;">
+                    <div class="password-reveal">
+                        <p class="password-message">I knew you'd say yes! ✨</p>
+                        <p class="password-hint">Enter the password to discover something...</p>
+                        <p class="password-clue">💡 Hint: Your favorite flower (lowercase)</p>
+                        
+                        <div class="password-input-wrapper">
+                            <input 
+                                type="password" 
+                                id="password-input" 
+                                placeholder="Type the password here..."
+                                autocomplete="off"
+                            />
+                            <button class="btn-submit" onclick="checkPassword()">Enter</button>
+                        </div>
+                        <p id="password-error" class="password-error" style="display: none;">
+                            Oops! Try again... think of something pink, red, blue and beautiful 🌷
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- Premium Photo Collection Section -->
-    <section class="content-section" style="background: rgba(255, 245, 247, 0.5);">
-        <div class="container">
-            <h2 class="section-title">Our Gallery</h2>
-            <p class="section-subtitle">A collection of moments that made our hearts bloom</p>
-            
-            <div class="row g-5">
-                <div class="col-12 col-md-6">
-                    <div class="photo-frame">
-                        <img src="photo1.png" alt="Memory 1" loading="lazy">
+    <!-- Date Information Page -->
+    <div id="date-info-page" class="date-info-page">
+        <!-- Floating Tulip Petals -->
+        <div class="tulip-petal"></div>
+        <div class="tulip-petal"></div>
+        <div class="tulip-petal"></div>
+        <div class="tulip-petal"></div>
+        <div class="tulip-petal"></div>
+
+        <div class="date-card">
+            <div class="date-header">
+                <h1>Planned Date</h1>
+                <div class="heart-divider">♥ ♥ ♥</div>
+                <p>A day made just for us</p>
+            </div>
+
+            <div class="date-details">
+                <div class="date-item">
+                    <div class="date-item-label">Date & Time</div>
+                    <div class="date-item-content">
+                        Saturday, February 14th, 2026<br>
+                        5:00 PM - Nearly Evening
                     </div>
                 </div>
-                <div class="col-12 col-md-6">
-                    <div class="photo-frame">
-                        <img src="photo2.png" alt="Memory 2" loading="lazy">
+
+                <div class="date-item">
+                    <div class="date-item-label">Venue</div>
+                    <div class="date-item-content">
+                        The Rose Garden Restaurant<br>
+                        <em>An intimate dining experience</em>
                     </div>
                 </div>
-                <div class="col-12 col-md-6">
-                    <div class="photo-frame">
-                        <img src="photo3.png" alt="Memory 3" loading="lazy">
+
+                <div class="date-item">
+                    <div class="date-item-label">Address</div>
+                    <div class="date-item-content">
+                        123 Romance Boulevard<br>
+                        Heartsville, Love City 12345<br>
+                        (Valet parking available)
                     </div>
                 </div>
-                <div class="col-12 col-md-6">
-                    <div class="photo-frame">
-                        <img src="photo4.png" alt="Memory 4" loading="lazy">
+
+                <div class="date-item">
+                    <div class="date-item-label">Dress Code</div>
+                    <div class="date-item-content">
+                        Casual<br>
+                        <em>Wear something that makes you feel comfortable since you are so beautiful despite what you wear</em>
                     </div>
                 </div>
-                <div class="col-12 col-md-6">
-                    <div class="photo-frame">
-                        <img src="photo5.png" alt="Memory 5" loading="lazy">
-                    </div>
-                </div>
-                <div class="col-12 col-md-6">
-                    <div class="photo-frame">
-                        <img src="photo6.png" alt="Memory 6" loading="lazy">
-                    </div>
-                </div>
-                <div class="col-12 col-md-6">
-                    <div class="photo-frame">
-                        <img src="photo7.png" alt="Memory 7" loading="lazy">
-                    </div>
-                </div>
-                <div class="col-12 col-md-6">
-                    <div class="photo-frame">
-                        <img src="photo8.png" alt="Memory 8" loading="lazy">
-                    </div>
-                </div>
-                <div class="col-12 col-md-6">
-                    <div class="photo-frame">
-                        <img src="photo9.png" alt="Memory 9" loading="lazy">
-                    </div>
-                </div>
-                <div class="col-12 col-md-6">
-                    <div class="photo-frame">
-                        <img src="photo10.png" alt="Memory 10" loading="lazy">
-                    </div>
-                </div>
-                <div class="col-12 col-md-6">
-                    <div class="photo-frame">
-                        <img src="photo11.png" alt="Memory 11" loading="lazy">
-                    </div>
-                </div>
-                <div class="col-12 col-md-6">
-                    <div class="photo-frame">
-                        <img src="photo12.png" alt="Memory 12" loading="lazy">
-                    </div>
-                </div>
-                <div class="col-12 col-md-6">
-                    <div class="photo-frame">
-                        <img src="photo13.png" alt="Memory 13" loading="lazy">
-                    </div>
-                </div>
-                <div class="col-12 col-md-6">
-                    <div class="photo-frame">
-                        <img src="photo14.png" alt="Memory 14" loading="lazy">
-                    </div>
-                </div>
-                <div class="col-12 col-md-6">
-                    <div class="photo-frame">
-                        <img src="photo15.png" alt="Memory 15" loading="lazy">
-                    </div>
-                </div>
-                <div class="col-12 col-md-6">
-                    <div class="photo-frame">
-                        <img src="photo16.png" alt="Memory 16" loading="lazy">
-                    </div>
-                </div>
-                <div class="col-12 col-md-6">
-                    <div class="photo-frame">
-                        <img src="photo17.png" alt="Memory 17" loading="lazy">
-                    </div>
-                </div>
-                <div class="col-12 col-md-6">
-                    <div class="photo-frame">
-                        <img src="photo18.png" alt="Memory 18" loading="lazy">
-                    </div>
-                </div>
-                <div class="col-12 col-md-6">
-                    <div class="photo-frame">
-                        <img src="photo19.png" alt="Memory 19" loading="lazy">
-                    </div>
-                </div>
-                <div class="col-12 col-md-6">
-                    <div class="photo-frame">
-                        <img src="photo20.png" alt="Memory 20" loading="lazy">
+
+                <div class="date-item">
+                    <div class="date-item-label">Special Notes</div>
+                    <div class="date-item-content">
+                        I've arranged everything for our perfect evening together.<br>
+                        Just bring your beautiful smile! 💕<br>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Text Section -->
-    <section class="content-section">
-        <div class="container">
-            <div class="decorative-line"></div>
-            <p class="elegant-text">
-                In every photograph, I see the reflection of our love—timeless, beautiful, and forever growing.
+            <div class="decorative-line" style="margin-top: 3rem;"></div>
+            <p class="elegant-text" style="margin-top: 2rem; font-size: 1.2rem;">
+                I can't wait to spend this special evening with you ❤️
             </p>
-            <div class="decorative-line"></div>
         </div>
-    </section>
 
-    <!-- Video Gallery Section -->
-    <section class="content-section" style="background: rgba(255, 245, 247, 0.3);">
-        <div class="container">
-            <h2 class="section-title">Moving Memories</h2>
-            <p class="section-subtitle">Moments that come alive</p>
-            
-            <div class="row g-4">
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="video-card">
-                        <video controls preload="metadata">
-                            <source src="vid1.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
+        <!-- Camera Icon to go to Album -->
+        <div class="camera-icon" onclick="goToAlbum()" title="View Our Photo Album">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.65 0-3 1.35-3 3s1.35 3 3 3 3-1.35 3-3-1.35-3-3-3z"/>
+            </svg>
+        </div>
+    </div>
+
+    <!-- Main Album Page -->
+    <div id="album-page" style="display: none;">
+        <!-- Floating Tulip Petals -->
+        <div class="tulip-petal"></div>
+        <div class="tulip-petal"></div>
+        <div class="tulip-petal"></div>
+        <div class="tulip-petal"></div>
+        <div class="tulip-petal"></div>
+
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1>Our Love Gallery</h1>
+                <div class="decorative-line"></div>
+                <p>Every moment with you is a treasure worth keeping forever</p>
+            </div>
+        </section>
+
+        <!-- Photobooth Section -->
+        <section class="content-section photobooth-section">
+            <div class="container">
+                <h2 class="section-title">Photobooth Memories</h2>
+                <p class="section-subtitle">Captured moments of pure joy and laughter</p>
+                
+                <div class="row g-5 justify-content-center">
+                    <!-- Photobooth Strip 1 -->
+                    <div class="col-12 col-lg-5">
+                        <div class="photobooth-strip">
+                            <div class="strip-header">
+                                <div class="strip-holes">
+                                    <span class="hole"></span>
+                                    <span class="hole"></span>
+                                    <span class="hole"></span>
+                                </div>
+                                <div class="strip-date">Our Special Day</div>
+                                <div class="strip-holes">
+                                    <span class="hole"></span>
+                                    <span class="hole"></span>
+                                    <span class="hole"></span>
+                                </div>
+                            </div>
+                            <div class="photobooth-frame">
+                                <img src="photobooth1.png" alt="Photobooth Strip 1" loading="lazy">
+                            </div>
+                            <div class="strip-footer">
+                                <div class="strip-brand">♥ Forever Together ♥</div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="video-card">
-                        <video controls preload="metadata">
-                            <source src="vid2.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="video-card">
-                        <video controls preload="metadata">
-                            <source src="vid3.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="video-card">
-                        <video controls preload="metadata">
-                            <source src="vid4.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="video-card">
-                        <video controls preload="metadata">
-                            <source src="vid5.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="video-card">
-                        <video controls preload="metadata">
-                            <source src="vid6.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
+                    
+                    <!-- Photobooth Strip 2 -->
+                    <div class="col-12 col-lg-5">
+                        <div class="photobooth-strip">
+                            <div class="strip-header">
+                                <div class="strip-holes">
+                                    <span class="hole"></span>
+                                    <span class="hole"></span>
+                                    <span class="hole"></span>
+                                </div>
+                                <div class="strip-date">Making Memories</div>
+                                <div class="strip-holes">
+                                    <span class="hole"></span>
+                                    <span class="hole"></span>
+                                    <span class="hole"></span>
+                                </div>
+                            </div>
+                            <div class="photobooth-frame">
+                                <img src="photobooth2.png" alt="Photobooth Strip 2" loading="lazy">
+                            </div>
+                            <div class="strip-footer">
+                                <div class="strip-brand">♥ Love & Laughter ♥</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Closing Section -->
-    <section class="content-section">
-        <div class="container">
-            <div class="decorative-line"></div>
-            <p class="elegant-text">
-                Through every season, every laugh, and every tender moment—our story continues to unfold like petals of a blooming rose.
-            </p>
-            <div class="decorative-line"></div>
-            <p class="elegant-text" style="font-size: clamp(1rem, 2vw, 1.3rem); margin-top: 2rem;">
-                Forever yours, forever mine, forever us.
-            </p>
-        </div>
-    </section>
+        <!-- Bootstrap Photo Gallery Section -->
+        <section class="content-section">
+            <div class="container">
+                <h2 class="section-title">Cherished Moments</h2>
+                <p class="section-subtitle">Click on any photo to view in full size</p>
+                
+                <div class="row g-4">
+                    <!-- Photo 1 -->
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="photo-card silk-overlay" data-bs-toggle="modal" data-bs-target="#photoModal1">
+                            <img src="img1.png" alt="Our Memory 1" loading="lazy">
+                        </div>
+                    </div>
+                    
+                    <!-- Photo 2 -->
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="photo-card silk-overlay" data-bs-toggle="modal" data-bs-target="#photoModal2">
+                            <img src="img2.png" alt="Our Memory 2" loading="lazy">
+                        </div>
+                    </div>
+                    
+                    <!-- Photo 3 -->
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="photo-card silk-overlay" data-bs-toggle="modal" data-bs-target="#photoModal3">
+                            <img src="img3.png" alt="Our Memory 3" loading="lazy">
+                        </div>
+                    </div>
+                    
+                    <!-- Photo 4 -->
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="photo-card silk-overlay" data-bs-toggle="modal" data-bs-target="#photoModal4">
+                            <img src="img4.png" alt="Our Memory 4" loading="lazy">
+                        </div>
+                    </div>
+                    
+                    <!-- Photo 5 -->
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="photo-card silk-overlay" data-bs-toggle="modal" data-bs-target="#photoModal5">
+                            <img src="img5.png" alt="Our Memory 5" loading="lazy">
+                        </div>
+                    </div>
+                    
+                    <!-- Photo 6 -->
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="photo-card silk-overlay" data-bs-toggle="modal" data-bs-target="#photoModal6">
+                            <img src="img6.png" alt="Our Memory 6" loading="lazy">
+                        </div>
+                    </div>
+                    
+                    <!-- Photo 7 -->
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="photo-card silk-overlay" data-bs-toggle="modal" data-bs-target="#photoModal7">
+                            <img src="img7.png" alt="Our Memory 7" loading="lazy">
+                        </div>
+                    </div>
+                    
+                    <!-- Photo 8 -->
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="photo-card silk-overlay" data-bs-toggle="modal" data-bs-target="#photoModal8">
+                            <img src="img8.png" alt="Our Memory 8" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        
+        <!-- Text Section -->
+        <section class="content-section">
+            <div class="container">
+                <div class="decorative-line"></div>
+                <p class="elegant-text">
+                    In every photograph, I see the reflection of our love—timeless, beautiful, and forever growing.
+                </p>
+                <div class="decorative-line"></div>
+            </div>
+        </section>
+
+        <!-- Video Gallery Section -->
+        <section class="content-section" style="background: rgba(255, 245, 247, 0.3);">
+            <div class="container">
+                <h2 class="section-title">Moving Memories</h2>
+                <p class="section-subtitle">Moments that come alive</p>
+                
+                <div class="row g-4">
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="video-card">
+                            <video controls preload="metadata">
+                                <source src="vid1.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="video-card">
+                            <video controls preload="metadata">
+                                <source src="vid2.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="video-card">
+                            <video controls preload="metadata">
+                                <source src="vid3.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="video-card">
+                            <video controls preload="metadata">
+                                <source src="vid4.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="video-card">
+                            <video controls preload="metadata">
+                                <source src="vid5.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="video-card">
+                            <video controls preload="metadata">
+                                <source src="vid6.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Closing Section -->
+        <section class="content-section">
+            <div class="container">
+                <div class="decorative-line"></div>
+                <p class="elegant-text">
+                    Through every season, every laugh, and every tender moment—our story continues to unfold like petals of a blooming rose.
+                </p>
+                <div class="decorative-line"></div>
+                <p class="elegant-text" style="font-size: clamp(1rem, 2vw, 1.3rem); margin-top: 2rem;">
+                    Forever yours, forever mine, forever us.
+                </p>
+            </div>
+        </section>
+    </div>
 
     <!-- Modals for Bootstrap Photos -->
     <!-- Modal 1 -->
@@ -700,6 +1264,7 @@
         </div>
     </div>
 
+    <!-- Modal 8 -->
     <div class="modal fade" id="photoModal8" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
@@ -714,5 +1279,126 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Check if user has already accessed the site
+        const hasAccess = sessionStorage.getItem('valentineAccess');
+        const viewingAlbum = sessionStorage.getItem('viewingAlbum');
+
+        // Initialize page visibility
+        if (hasAccess === 'granted') {
+            document.getElementById('valentine-overlay').style.display = 'none';
+            if (viewingAlbum === 'true') {
+                document.getElementById('date-info-page').classList.remove('active');
+                document.getElementById('album-page').style.display = 'block';
+            } else {
+                document.getElementById('date-info-page').classList.add('active');
+                document.getElementById('album-page').style.display = 'none';
+            }
+        } else {
+            document.body.style.overflow = 'hidden';
+        }
+
+        function handleYes() {
+            document.querySelector('.valentine-buttons').style.display = 'none';
+            document.querySelector('.valentine-question').style.display = 'none';
+            document.getElementById('password-section').style.display = 'block';
+            
+            // Focus on password input
+            setTimeout(() => {
+                document.getElementById('password-input').focus();
+            }, 300);
+        }
+        
+        function handleNo(button) {
+            // Make the "No" button run away!
+            const modal = document.querySelector('.valentine-modal');
+            const modalRect = modal.getBoundingClientRect();
+            const buttonRect = button.getBoundingClientRect();
+            
+            const maxX = modalRect.width - buttonRect.width - 40;
+            const maxY = modalRect.height - buttonRect.height - 40;
+            
+            const randomX = Math.random() * maxX;
+            const randomY = Math.random() * maxY;
+            
+            button.style.position = 'absolute';
+            button.style.left = randomX + 'px';
+            button.style.top = randomY + 'px';
+            button.style.transition = 'all 0.3s ease';
+            
+            // Make "Yes" button bigger
+            const yesButton = document.querySelector('.btn-yes');
+            const currentSize = parseFloat(getComputedStyle(yesButton).fontSize);
+            yesButton.style.fontSize = (currentSize * 1.1) + 'px';
+            yesButton.style.padding = '1.1rem 3.3rem';
+        }
+        
+        function checkPassword() {
+            const input = document.getElementById('password-input');
+            const error = document.getElementById('password-error');
+            const password = input.value.trim().toLowerCase();
+            
+            if (password === 'tulips') {
+                // Correct password!
+                sessionStorage.setItem('valentineAccess', 'granted');
+                sessionStorage.setItem('viewingAlbum', 'false');
+                
+                // Success animation
+                const overlay = document.getElementById('valentine-overlay');
+                overlay.style.animation = 'fadeOut 0.8s ease-out';
+                
+                setTimeout(() => {
+                    overlay.style.display = 'none';
+                    document.body.style.overflow = '';
+                    document.getElementById('date-info-page').classList.add('active');
+                }, 800);
+                
+                // Add fadeOut animation
+                const style = document.createElement('style');
+                style.textContent = `
+                    @keyframes fadeOut {
+                        to {
+                            opacity: 0;
+                            transform: scale(0.95);
+                        }
+                    }
+                `;
+                document.head.appendChild(style);
+            } else {
+                // Wrong password
+                error.style.display = 'block';
+                input.value = '';
+                input.style.animation = 'none';
+                setTimeout(() => {
+                    input.style.animation = 'shake 0.5s ease-in-out';
+                }, 10);
+                
+                setTimeout(() => {
+                    error.style.display = 'none';
+                }, 3000);
+            }
+        }
+
+        // Function to navigate to album
+        function goToAlbum() {
+            sessionStorage.setItem('viewingAlbum', 'true');
+            document.getElementById('date-info-page').classList.remove('active');
+            document.getElementById('album-page').style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Add enter key support for password
+        document.addEventListener('DOMContentLoaded', function() {
+            const passwordInput = document.getElementById('password-input');
+            if (passwordInput) {
+                passwordInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        checkPassword();
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>
