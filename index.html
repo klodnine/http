@@ -431,6 +431,52 @@
             letter-spacing: 1px;
         }
 
+        /* BOOKING CONFIRMATION STYLES */
+        .booking-confirmation {
+            margin-bottom: 3rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .booking-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 15px 50px rgba(255, 182, 193, 0.3);
+            border: 2px solid rgba(255, 209, 220, 0.4);
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .booking-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(255, 182, 193, 0.4);
+            border-color: var(--blush-rose);
+        }
+
+        .booking-screenshot {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(139, 69, 89, 0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .booking-card:hover .booking-screenshot {
+            transform: scale(1.02);
+        }
+
+        .booking-caption {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-style: italic;
+            color: var(--deep-rose);
+            text-align: center;
+            margin-top: 1.5rem;
+            margin-bottom: 0;
+            font-weight: 500;
+        }
+
         /* DATE INFORMATION PAGE STYLES */
         .date-info-page {
             min-height: 100vh;
@@ -814,6 +860,14 @@
             .btn-submit {
                 width: 100%;
             }
+
+            .booking-card {
+                padding: 1.5rem;
+            }
+
+            .booking-caption {
+                font-size: 1.2rem;
+            }
         }
     </style>
 </head>
@@ -873,9 +927,17 @@
 
         <div class="date-card">
             <div class="date-header">
-                <h1>Planned Date</h1>
+                <h1>Night Date Together</h1>
                 <div class="heart-divider">♥ ♥ ♥</div>
                 <p>A day made just for us</p>
+            </div>
+
+            <!-- Booking Confirmation Section -->
+            <div class="booking-confirmation">
+                <div class="booking-card">
+                    <img src="booking-screenshot.png" alt="Italianni's Booking Confirmation" class="booking-screenshot">
+                    <p class="booking-caption">Your reservation is confirmed! 🎉</p>
+                </div>
             </div>
 
             <div class="date-details">
@@ -883,31 +945,31 @@
                     <div class="date-item-label">Date & Time</div>
                     <div class="date-item-content">
                         Saturday, February 14th, 2026<br>
-                        5:00 PM - Nearly Evening
+                        6:00 PM - Evening
                     </div>
                 </div>
 
                 <div class="date-item">
                     <div class="date-item-label">Venue</div>
                     <div class="date-item-content">
-                        The Rose Garden Restaurant<br>
-                        <em>An intimate dining experience</em>
+                        Italianni's Restaurant<br>
+                        <em>An italian dining experience</em>
                     </div>
                 </div>
 
                 <div class="date-item">
                     <div class="date-item-label">Address</div>
                     <div class="date-item-content">
-                        123 Romance Boulevard<br>
-                        Heartsville, Love City 12345<br>
-                        (Valet parking available)
+                        Mall of Asia<br>
+                        Seaside Blvd 123 Pasay, Metro Manila<br>
+                        (4th Floor, near the cinemas)
                     </div>
                 </div>
 
                 <div class="date-item">
                     <div class="date-item-label">Dress Code</div>
                     <div class="date-item-content">
-                        Casual<br>
+                        Casual (We can talk about it more)<br>
                         <em>Wear something that makes you feel comfortable since you are so beautiful despite what you wear</em>
                     </div>
                 </div>
@@ -915,8 +977,8 @@
                 <div class="date-item">
                     <div class="date-item-label">Special Notes</div>
                     <div class="date-item-content">
-                        I've arranged everything for our perfect evening together.<br>
-                        Just bring your beautiful smile! 💕<br>
+                        Amid the pasta and candlelight at Italianni's, your beauty outshines it all honey. Can't wait to share this magical evening with you!<br>
+                        Bring your beautiful smile! 💕<br>
                     </div>
                 </div>
             </div>
