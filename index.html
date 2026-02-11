@@ -648,6 +648,147 @@
 
         .btn-secondary-clean:hover { border-color: #d0b0b8; color: #906070; }
 
+        /* ============================================
+           VIRUS WARNING SCREEN
+           ============================================ */
+        #virus-warning {
+            position: fixed; top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: #000000;
+            z-index: 100000;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            animation: screenFlicker 0.1s infinite;
+        }
+
+        #virus-warning.active { display: flex; }
+
+        @keyframes screenFlicker {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.95; }
+        }
+
+        .warning-container {
+            max-width: 600px;
+            width: 90%;
+            background: #1a0000;
+            border: 3px solid #ff0000;
+            padding: 2rem;
+            box-shadow: 0 0 50px rgba(255, 0, 0, 0.5), inset 0 0 50px rgba(255, 0, 0, 0.1);
+            animation: warningPulse 1s ease-in-out infinite;
+        }
+
+        @keyframes warningPulse {
+            0%, 100% { box-shadow: 0 0 50px rgba(255, 0, 0, 0.5), inset 0 0 50px rgba(255, 0, 0, 0.1); }
+            50% { box-shadow: 0 0 80px rgba(255, 0, 0, 0.8), inset 0 0 80px rgba(255, 0, 0, 0.2); }
+        }
+
+        .warning-icon {
+            text-align: center;
+            font-size: 4rem;
+            color: #ff0000;
+            margin-bottom: 1rem;
+            animation: iconShake 0.5s infinite;
+        }
+
+        @keyframes iconShake {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-5deg); }
+            75% { transform: rotate(5deg); }
+        }
+
+        .warning-title {
+            font-family: 'Courier New', monospace;
+            font-size: 1.8rem;
+            color: #ff0000;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+        }
+
+        .warning-message {
+            font-family: 'Courier New', monospace;
+            font-size: 1rem;
+            color: #ffcccc;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .warning-list {
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: #ff6666;
+            margin: 1rem 0;
+            padding-left: 2rem;
+        }
+
+        .warning-list li {
+            margin-bottom: 0.5rem;
+            animation: textGlitch 2s infinite;
+        }
+
+        @keyframes textGlitch {
+            0%, 90%, 100% { opacity: 1; }
+            95% { opacity: 0.7; }
+        }
+
+        .progress-bar-container {
+            width: 100%;
+            height: 30px;
+            background: #000;
+            border: 2px solid #ff0000;
+            margin-top: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #ff0000, #ff6666, #ff0000);
+            background-size: 200% 100%;
+            animation: progressFill 5s linear forwards, gradientShift 1s linear infinite;
+            width: 0%;
+        }
+
+        @keyframes progressFill {
+            from { width: 0%; }
+            to { width: 100%; }
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+
+        .progress-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Courier New', monospace;
+            color: #fff;
+            font-weight: bold;
+            text-shadow: 0 0 5px #000;
+            z-index: 10;
+        }
+
+        .warning-footer {
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            color: #ff9999;
+            text-align: center;
+            margin-top: 1.5rem;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50%, 100% { opacity: 1; }
+            25%, 75% { opacity: 0; }
+        }
+
         /* ---- QUESTION PAGE ---- */
         .question-marker {
             font-family: 'DM Sans', sans-serif;
@@ -804,10 +945,43 @@
             .btn-submit { width: 100%; }
             .booking-card { padding: 1.5rem; }
             .menu-image { height: 280px; }
+            .warning-container { padding: 1.5rem; }
+            .warning-title { font-size: 1.4rem; }
+            .warning-message { font-size: 0.9rem; }
         }
     </style>
 </head>
 <body>
+
+    <!-- Virus Warning Screen -->
+    <div id="virus-warning">
+        <div class="warning-container">
+            <div class="warning-icon">⚠️</div>
+            <div class="warning-title">CRITICAL SYSTEM ERROR</div>
+            <div class="warning-message">
+                ⚠️ MALICIOUS SOFTWARE DETECTED ⚠️
+            </div>
+            <div class="warning-message">
+                Your system has been compromised. The following threats have been identified:
+            </div>
+            <ul class="warning-list">
+                <li>▸ Trojan.Valentine.Exploit</li>
+                <li>▸ Worm.LoveVirus.32</li>
+                <li>▸ Ransomware.HeartBreaker</li>
+                <li>▸ Spyware.RomanticData</li>
+            </ul>
+            <div class="warning-message">
+                Initiating emergency protocol...
+            </div>
+            <div class="progress-bar-container">
+                <div class="progress-bar"></div>
+                <div class="progress-text">SCANNING SYSTEM...</div>
+            </div>
+            <div class="warning-footer">
+                DO NOT TURN OFF YOUR DEVICE
+            </div>
+        </div>
+    </div>
 
     <!-- Clean White Overlay -->
     <div id="valentine-overlay">
@@ -934,8 +1108,8 @@
                     <div class="date-item">
                         <div class="date-item-label">Special Notes</div>
                         <div class="date-item-content">
-                            Amid the pasta and candlelight at Italianni's, your beauty outshines it all honey. Can't wait to share this magical evening with you!<br>
-                            Bring your beautiful smile! 
+                            Hey hon, uhmm I just wanted to say that I'm so excited for our date, since finally we're celebrating valentines together! Can't wait to share this memorable evening with you!<br>
+                            Bring your most beautiful smile! 
                         </div>
                     </div>
                 </div>
@@ -965,7 +1139,7 @@
                 <button class="btn-back" onclick="goBackToDate()">Back to Date Details</button>
 
                 <div class="menu-header">
-                    <h1>After You Came Up Here, Let Me Know What You'd Like To Order, Honey</h1>
+                    <h1>After You Came Up Here, Let Me Know What You'd Like To Order</h1>
                     <div class="heart-divider">♥ ♥ ♥</div>
                     <p>Delicious dishes we'll enjoy together</p>
                 </div>
@@ -975,21 +1149,21 @@
                         <div class="menu-item-card" onclick="openMenuImage('order1.png')">
                             <div class="menu-image"><img src="order1.png" alt="First Course" loading="lazy"></div>
                             <h3 class="menu-item-title">All day promo</h3>
-                            <p class="menu-item-description">Can order 2 sets depending on your choice for the 3 courses.</p>
+                            <p class="menu-item-description">Can order 2 sets depending on your choice for the 3 courses (Appetizer + Entree + Drink).</p>
                         </div>
                     </div>
                     <div class="col-12 col-md-6 col-lg-4">
                         <div class="menu-item-card" onclick="openMenuImage('order2.png')">
                             <div class="menu-image"><img src="order2.png" alt="Main Course" loading="lazy"></div>
                             <h3 class="menu-item-title">Bistro Share</h3>
-                            <p class="menu-item-description">1 starter plus 3 entrees depending on your choice.</p>
+                            <p class="menu-item-description">Can order 1 set depending on your choice for the 2 courses (appetizer + 3 Entrees).</p>
                         </div>
                     </div>
                     <div class="col-12 col-md-6 col-lg-4">
                         <div class="menu-item-card" onclick="openMenuImage('order3.png')">
                             <div class="menu-image"><img src="order3.png" alt="Sweet Finale" loading="lazy"></div>
                             <h3 class="menu-item-title">Signature</h3>
-                            <p class="menu-item-description">Might also be a choice just pick in their bundle.</p>
+                            <p class="menu-item-description">Might also be a choice to pick in their bundle.</p>
                         </div>
                     </div>
                 </div>
@@ -1024,7 +1198,7 @@
 
         <section class="hero-section" style="min-height: 80vh;">
             <div class="hero-content">
-                <h1>Happy Valentines, Honey!</h1>
+                <h1>Happy Valentines, Hon!</h1>
                 <div class="decorative-line"></div>
                 <p>Here's a short recap of every moment with you which is a treasure worth keeping forever</p>
             </div>
@@ -1146,13 +1320,24 @@
 
         function handleCuriousYes() {
             const introPage = document.getElementById('intro-page');
+            const virusWarning = document.getElementById('virus-warning');
             const questionPage = document.getElementById('question-page');
+            
+            // Fade out intro page
             introPage.classList.add('fade-out');
+            
             setTimeout(() => {
                 introPage.style.display = 'none';
-                questionPage.style.display = 'block';
-                questionPage.classList.add('fade-in');
-                setTimeout(() => questionPage.classList.remove('fade-in'), 500);
+                // Show virus warning
+                virusWarning.classList.add('active');
+                
+                // Auto-hide after 5 seconds and show question page
+                setTimeout(() => {
+                    virusWarning.classList.remove('active');
+                    questionPage.style.display = 'block';
+                    questionPage.classList.add('fade-in');
+                    setTimeout(() => questionPage.classList.remove('fade-in'), 500);
+                }, 5000);
             }, 400);
         }
 
